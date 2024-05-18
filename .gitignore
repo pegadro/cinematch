@@ -1,0 +1,6 @@
+__pycache__/
+movies_to_posters.ipynb
+datasets/
+experiments/
+.cinematch
+preprocesamiento.ipynb
