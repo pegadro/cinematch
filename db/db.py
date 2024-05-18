@@ -52,6 +52,25 @@ def load_sparse_ratings(db_name):
     return sparse_ratings
 
 
+def get_data_column_row_indices(db_name):
+    db = connect_to_db(db_name)
+
+    collection_ratings_data = db["ratings_data"]
+    collection_column_indices = db["ratings_column_indices"]
+    collection_row_indices = db["ratings_row_indices"]
+
+    ratings_data_cursor = collection_ratings_data.find({})
+    ratings_data = ratings_data_cursor[0]["data"]
+
+    column_indices_cursor = collection_column_indices.find({})
+    column_indices = column_indices_cursor[0]["data"]
+
+    row_indices_cursor = collection_row_indices.find({})
+    row_indices = row_indices_cursor[0]["data"]
+
+    return ratings_data, column_indices, row_indices
+
+
 def get_n_users_and_n_movies(db_name):
     db = connect_to_db(db_name)
 
@@ -77,9 +96,9 @@ def get_intercept_latent_factors(db_name):
     return intercept_latent_factors
 
 
-def get_users_latent_factors(db_name):
+def get_users_latent_factors(db_name, lt_length):
     n_users = get_n_users_and_n_movies(db_name)["n_users"]
-    users_latent_factors = np.zeros((n_users, 600))
+    users_latent_factors = np.zeros((n_users, lt_length))
 
     db = connect_to_db(db_name)
     collection_users_latent_factors = db["users_latent_factors"]
@@ -91,9 +110,9 @@ def get_users_latent_factors(db_name):
     return users_latent_factors
 
 
-def get_movies_latent_factors(db_name):
+def get_movies_latent_factors(db_name, lt_length):
     n_movies = get_n_users_and_n_movies(db_name)["n_movies"]
-    movies_latent_factors = np.zeros((n_movies, 600))
+    movies_latent_factors = np.zeros((n_movies, lt_length))
 
     db = connect_to_db(db_name)
     collection_movies_latent_factors = db["movies_latent_factors"]

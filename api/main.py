@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from db import db
 
-from api.routers import regression
+from api.routers import regression, classification
 
 app = FastAPI()
 app.add_middleware(
@@ -15,6 +15,7 @@ app.add_middleware(
 )
 
 app.include_router(regression.router, prefix="/regression")
+app.include_router(classification.router, prefix="/classification")
 
 
 @app.get("/genres/")

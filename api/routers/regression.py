@@ -140,7 +140,7 @@ async def create_new_user(initialRatings: MovieList):
     )
 
     # save predictions
-    movies_lt = db.get_movies_latent_factors(DB_NAME)
+    movies_lt = db.get_movies_latent_factors(DB_NAME, 600)
 
     predictions = (
         np.matmul(movies_lt, learned_user_latent_factor.T)
