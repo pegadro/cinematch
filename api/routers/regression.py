@@ -15,7 +15,7 @@ DB_NAME = "cinematch_regression"
 async def get_rated_movies(user_id: int):
     movies = db.get_user_rated_movies(DB_NAME, int(user_id))
     random.shuffle(movies)
-    print(movies)
+    # print(movies)
     return JSONResponse(status_code=200, content=movies)
 
 
