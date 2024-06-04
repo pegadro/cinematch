@@ -30,7 +30,7 @@ You can check the code from the regression and classification model in [recommen
 ## Model training
 You can check the model training code for regression and classification in the next notebooks:
 - regression: [regression/model_training.ipynb](regression/model_training.ipynb)
-- classification: [classification/model_training.ipynb](regression/model_training.ipynb)
+- classification: [classification/model_training.ipynb](classification/model_training.ipynb)
 
 ## Additional features
 There are some notebooks whose purpose is to index data to mongodb. These notebooks are the ones that start with insert in its name.
